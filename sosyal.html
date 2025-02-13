@@ -6,83 +6,142 @@
     <title>Sosyal Bilgiler Ödev Takip Tablosu</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #e3f2fd;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #81d4fa, #4fc3f7); /* Modern gradient background */
             color: #1565c0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
+
         .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-out;
         }
+
         h1 {
             text-align: center;
+            margin-bottom: 20px;
+            color: #1565c0;
+            font-size: 32px;
+            animation: slideIn 1s ease-in-out;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
         }
+
         table, th, td {
             border: 1px solid #1565c0;
         }
+
         th, td {
-            padding: 10px;
+            padding: 15px;
             text-align: left;
+            font-size: 16px;
         }
+
         th {
             background: #bbdefb;
+        }
+
+        tr:hover {
+            background-color: #e1f5fe;
+            transition: background-color 0.3s ease;
+        }
+
+        .readonly {
+            background-color: #f9f9f9;
+            border: none;
+            color: #1565c0;
+            text-align: left;
+            padding: 10px;
+            font-size: 16px;
+            text-transform: capitalize;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Table Row Hover Effect */
+        tr:hover {
+            background-color: #b3e5fc;
+            transition: background-color 0.3s ease;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sosyal Bilgiler</h1>
+        <h1>Sosyal Bilgiler Ödev Takip Tablosu</h1>
         <table>
             <tr>
-                <th>Gün</th>
-                <th>Ödev</th>
-                <th>Teslim Tarihi</th>
+                <th>Aktif Ödevler</th>
+                <th>Hangi Kitaptan</th>
+                <th>Nerelerden</th>
             </tr>
             <tr>
-                <td>Pazartesi</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
             <tr>
-                <td>Salı</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
             <tr>
-                <td>Çarşamba</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
             <tr>
-                <td>Perşembe</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
             <tr>
-                <td>Cuma</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
             <tr>
-                <td>Cumartesi</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
             <tr>
-                <td>Pazar</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
         </table>
     </div>
