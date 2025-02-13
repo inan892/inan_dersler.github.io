@@ -4,146 +4,210 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sosyal Bilgiler Ödev Takip Tablosu</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
+        /* Renk Paleti */
+        :root {
+            --primary-color: #1565c0;
+            --secondary-color: #4caf50;
+            --accent-color: #fbc02d;
+            --background-light: #e3f2fd;
+            --background-dark: #2c3e50;
+            --text-light: #ffffff;
+            --text-dark: #000000;
+            --text-muted: #607d8b;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #81d4fa, #4fc3f7); /* Modern gradient background */
-            color: #1565c0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            background-color: var(--background-light);
+            color: var(--primary-color);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
-            max-width: 900px;
-            width: 100%;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1.5s ease-out;
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 20px;
-            color: #1565c0;
-            font-size: 32px;
-            animation: slideIn 1s ease-in-out;
+            color: var(--primary-color);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+        /* Gece/Gündüz Modu */
+        body.dark-mode {
+            background-color: var(--background-dark);
+            color: var(--text-light);
         }
 
-        table, th, td {
-            border: 1px solid #1565c0;
+        .container.dark-mode {
+            background-color: #34495e;
         }
 
-        th, td {
-            padding: 15px;
-            text-align: left;
-            font-size: 16px;
+        /* Geçiş Animasyonu için Kartlar */
+        .card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.5s forwards;
         }
 
-        th {
-            background: #bbdefb;
-        }
-
-        tr:hover {
-            background-color: #e1f5fe;
-            transition: background-color 0.3s ease;
-        }
-
-        .readonly {
-            background-color: #f9f9f9;
-            border: none;
-            color: #1565c0;
-            text-align: left;
-            padding: 10px;
-            font-size: 16px;
-            text-transform: capitalize;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+        @keyframes fadeUp {
             100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-100%);
-            }
+        @keyframes fadeIn {
             100% {
-                transform: translateX(0);
+                opacity: 1;
             }
         }
 
-        /* Table Row Hover Effect */
-        tr:hover {
-            background-color: #b3e5fc;
-            transition: background-color 0.3s ease;
+        /* Tablo ve Butonlar */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid var(--primary-color);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        td {
+            background-color: #bbdefb;
+        }
+
+        td.readonly {
+            background-color: #e1f5fe;
+            font-style: italic;
+        }
+
+        /* Gece/Gündüz Modu Butonu */
+        #mode-toggle {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #mode-toggle:hover {
+            background-color: #388e3c;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-top: 30px;
+        }
+
+        /* Ödev Yok yazılarının renk düzeni */
+        .readonly {
+            color: var(--text-muted);
+        }
+
+        body.dark-mode .readonly {
+            color: var(--text-dark);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sosyal Bilgiler Ödev Takip Tablosu</h1>
+        <h1>Sosyal Bilgiler</h1>
+        <button id="mode-toggle">Gece Modu</button>
+
         <table>
             <tr>
                 <th>Aktif Ödevler</th>
                 <th>Hangi Kitaptan</th>
                 <th>Nerelerden</th>
             </tr>
-            <tr>
+            <tr class="card">
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
             </tr>
-            <tr>
+            <tr class="card">
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
             </tr>
-            <tr>
+            <tr class="card">
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
             </tr>
-            <tr>
+            <tr class="card">
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
             </tr>
-            <tr>
+            <tr class="card">
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
             </tr>
-            <tr>
+            <tr class="card">
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
             </tr>
-            <tr>
+            <tr class="card">
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
             </tr>
         </table>
     </div>
+
+    <footer>
+        <p>&copy; 2025 Sosyal Bilgiler Ödev Takip | Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        // Gece/Gündüz Modu Değişimi
+        document.getElementById('mode-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            document.querySelector('.container').classList.toggle('dark-mode');
+            this.textContent = document.body.classList.contains('dark-mode') ? 'Gündüz Modu' : 'Gece Modu';
+        });
+
+        // Sayfa yüklendiğinde yazıların animasyonu
+        window.onload = function() {
+            document.querySelector("h1").style.animation = "fadeIn 1s forwards";
+            let cards = document.querySelectorAll('.card');
+            cards.forEach(function(card, index) {
+                setTimeout(function() {
+                    card.style.animation = "fadeUp 0.5s forwards";
+                }, index * 300); // Kartlar arasında küçük gecikme eklenir
+            });
+        };
+    </script>
 </body>
 </html>
