@@ -1,61 +1,134 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Dersler</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body bgcolor="grey">
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dersler</title>
+    <style>
+        /* Sayfa arka planı ve animasyon */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ff6b81, #ffd700, #4caf50, #3498db);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Animasyonlu arka plan */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Başlıklar */
+        header {
+            padding-top: 100px;
+        }
+
+        header h1 {
+            font-size: 50px;
+            margin: 0;
+            color: #fff;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        header h2 {
+            font-size: 28px;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Butonlar için stil */
+        .button-container {
+            margin: 30px;
+            display: inline-block;
+        }
+
+        button.btn {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            font-size: 20px;
+            padding: 15px 32px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        button.btn:hover {
+            background-color: #3498db;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        button.btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Mobil uyumlu */
+        @media screen and (max-width: 600px) {
+            header h1 {
+                font-size: 40px;
+            }
+
+            header h2 {
+                font-size: 20px;
+            }
+
+            button.btn {
+                font-size: 18px;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
         <h1>Ana Sayfa</h1>
-        <h1>(Lütfen istediğiniz dersi seçin)</h1>
-    </body>
+        <h2>Lütfen istediğiniz dersi seçin</h2>
+    </header>
+    
+    <div class="button-container">
+        <a href="sosyal.html">
+            <button class="btn">Sosyal Bilgiler</button>
+        </a>
+    </div>
+    
+    <div class="button-container">
+        <a href="fen.html">
+            <button class="btn">Fen Bilimleri</button>
+        </a>
+    </div>
+    
+    <div class="button-container">
+        <a href="türkçe.html">
+            <button class="btn">Türkçe</button>
+        </a>
+    </div>
+    
+    <div class="button-container">
+        <a href="matematik.html">
+            <button class="btn">Matematik</button>
+        </a>
+    </div>
+    
+    <div class="button-container">
+        <a href="proje.html">
+            <button class="btn">Proje</button>
+        </a>
+    </div>
+</body>
 </html>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div style="text-align: center;">
-    <a href="sosyal.html">
-        <button id="sos" class="btn">Sosyal Bilgiler</button>
-    </a>
-</div>
 
-
-<br><br><br>
-
-
-<div style="text-align: center;">
-    <a href="fen.html">
-        <button id="fen" class="btn">Fen Bilimleri</button>
-    </a>
-</div>
-
-
-<br><br><br>
-
-
-
-<div style="text-align: center;">
-    <a href="türkçe.html">
-        <button id="türk" class="btn">Türkçe</button>
-    </a>
-</div>
-
-<br><br><br>
-
-
-<div style="text-align: center;">
-    <a href="matematik.html">
-        <button id="mat" class="btn">Matematik</button>
-    </a>
-</div>
-
-<br><br><br>
-
-
-<div style="text-align: center;">
-    <a href="proje.html">
-        <button id="proje" class="btn">Proje</button>
-    </a>
-</div>
-</html>
