@@ -3,15 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ödev Takip Tablosu</title>
+    <title>Sosyal Bilgiler Ödev Takip Tablosu</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
+        /* Renk Paleti */
+        :root {
+            --primary-color: #1565c0;
+            --secondary-color: #4caf50;
+            --accent-color: #fbc02d;
+            --background-light: #e3f2fd;
+            --background-dark: #2c3e50;
+            --text-light: #ffffff;
+            --text-dark: #000000;
+            --text-muted: #607d8b;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #fff9c4;
-            color: #f57f17;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(270deg, #2196F3, #21CBF3);
+            background-size: 400% 400%;
+            animation: bgMove 10s infinite alternate;
+            color: var(--primary-color);
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        @keyframes bgMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
         .container {
             max-width: 800px;
             margin: auto;
@@ -19,72 +41,157 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1s forwards ease-out;
         }
-        h1 {
-            text-align: center;
+
+        h1, button, table, footer {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1s forwards ease-out;
         }
+
+        h1 { animation-delay: 0.2s; }
+        button { animation-delay: 0.4s; }
+        table { animation-delay: 0.6s; }
+        footer { animation-delay: 0.8s; }
+
+        @keyframes fadeUp {
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gece/Gündüz Modu */
+        body.dark-mode {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+        }
+
+        .container.dark-mode {
+            background-color: #34495e;
+        }
+
+        /* Tablo ve Butonlar */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
         }
+
         table, th, td {
-            border: 1px solid #f57f17;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
         }
+
         th, td {
             padding: 10px;
             text-align: left;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
         th {
-            background: #fff59d;
+            background: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        td {
+            background-color: #bbdefb;
+        }
+
+        td.readonly {
+            background-color: #e1f5fe;
+            font-style: italic;
+        }
+
+        /* Hover Efektleri */
+        td:hover, th:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        /* Gece/Gündüz Modu Butonu */
+        #mode-toggle {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #mode-toggle:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-top: 30px;
+            transition: color 0.3s ease;
+        }
+
+        /* Ödev Yok yazılarının renk düzeni */
+        .readonly {
+            color: var(--text-muted);
+        }
+
+        body.dark-mode .readonly {
+            color: var(--text-dark);
+        }
+        p{
+            color: #000000;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Türkçe</h1>
+        <h1>Sosyal Bilgiler</h1>
+        <button id="mode-toggle">Gece Modu</button>
+
         <table>
             <tr>
-                <th>Gün</th>
-                <th>Ödev</th>
-                <th>Teslim Tarihi</th>
+                <th>Aktif Ödevler</th>
+                <th>Hangi Kitaptan</th>
+                <th>Nerelerden</th>
             </tr>
             <tr>
-                <td>Pazartesi</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
             <tr>
-                <td>Salı</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
             <tr>
-                <td>Çarşamba</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Perşembe</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Cuma</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Cumartesi</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Pazar</td>
-                <td></td>
-                <td></td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
+                <td class="readonly">Ödev Yok</td>
             </tr>
         </table>
     </div>
+
+    <footer>
+        <p>&copy; 2025 Sosyal Bilgiler Ödev Takip | Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        // Gece/Gündüz Modu Değişimi
+        document.getElementById('mode-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            document.querySelector('.container').classList.toggle('dark-mode');
+            this.textContent = document.body.classList.contains('dark-mode') ? 'Gündüz Modu' : 'Gece Modu';
+        });
+    </script>
 </body>
 </html>
