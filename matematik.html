@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sosyal Bilgiler Ödev Takip Tablosu</title>
+    <title>Matematik Dersi Ödev Takip</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         /* Renk Paleti */
         :root {
-            --primary-color: #1565c0;
-            --secondary-color: #4caf50;
+            --primary-color: #f57f17; /* Sarı */
+            --secondary-color: #000000;
             --accent-color: #fbc02d;
-            --background-light: #e3f2fd;
-            --background-dark: #2c3e50;
-            --text-light: #ffffff;
+            --background-light: #ffeb3b;
+            --background-dark: #fbc02d;
+            --text-light: #000000;
             --text-dark: #000000;
             --text-muted: #607d8b;
         }
@@ -22,31 +22,24 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(270deg, #2196F3, #21CBF3);
-            background-size: 400% 400%;
-            animation: bgMove 10s infinite alternate;
-            color: var(--primary-color);
+            background-color: var(--background-light);
+            color: var(--text-dark);
             transition: background-color 0.3s, color 0.3s;
-        }
-
-        @keyframes bgMove {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
         }
 
         .container {
             max-width: 800px;
             margin: auto;
-            background: white;
+            background: #fdd835;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transform: translateY(50px);
             animation: fadeUp 1s forwards ease-out;
         }
 
-        h1, button, table, footer {
+        h1, button, footer {
             opacity: 0;
             transform: translateY(50px);
             animation: fadeUp 1s forwards ease-out;
@@ -54,8 +47,7 @@
 
         h1 { animation-delay: 0.2s; }
         button { animation-delay: 0.4s; }
-        table { animation-delay: 0.6s; }
-        footer { animation-delay: 0.8s; }
+        footer { animation-delay: 0.6s; }
 
         @keyframes fadeUp {
             100% {
@@ -71,7 +63,7 @@
         }
 
         .container.dark-mode {
-            background-color: #34495e;
+            background-color: #f57f17;
         }
 
         /* Tablo ve Butonlar */
@@ -79,18 +71,15 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            transition: all 0.3s ease;
         }
 
         table, th, td {
             border: 1px solid var(--primary-color);
-            transition: all 0.3s ease;
         }
 
         th, td {
             padding: 10px;
             text-align: left;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         th {
@@ -99,19 +88,12 @@
         }
 
         td {
-            background-color: #bbdefb;
+            background-color: #ffcc80;
         }
 
         td.readonly {
-            background-color: #e1f5fe;
+            background-color: #ffeb3b;
             font-style: italic;
-        }
-
-        /* Hover Efektleri */
-        td:hover, th:hover {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            cursor: pointer;
         }
 
         /* Gece/Gündüz Modu Butonu */
@@ -127,34 +109,22 @@
         }
 
         #mode-toggle:hover {
-            background-color: #388e3c;
+            background-color: #b71c1c;
             transform: scale(1.05);
         }
 
         footer {
             text-align: center;
             font-size: 14px;
-            color: var(--primary-color);
-            margin-top: 30px;
-            transition: color 0.3s ease;
-        }
-
-        /* Ödev Yok yazılarının renk düzeni */
-        .readonly {
-            color: var(--text-muted);
-        }
-
-        body.dark-mode .readonly {
             color: var(--text-dark);
+            margin-top: 30px;
         }
-        p{
-            color: #000000;
-        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sosyal Bilgiler</h1>
+        <h1>Matematik Dersi</h1>
         <button id="mode-toggle">Gece Modu</button>
 
         <table>
@@ -179,10 +149,11 @@
                 <td class="readonly">Ödev Yok</td>
             </tr>
         </table>
+
     </div>
 
     <footer>
-        <p>&copy; 2025 Sosyal Bilgiler Ödev Takip | Tüm hakları saklıdır.</p>
+        <p>&copy; 2025 Matematik Dersi | Tüm hakları saklıdır.</p>
     </footer>
 
     <script>
@@ -194,4 +165,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
