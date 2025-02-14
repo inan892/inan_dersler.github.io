@@ -22,9 +22,16 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--background-light);
+            background: linear-gradient(270deg, #2196F3, #21CBF3);
+            background-size: 400% 400%;
+            animation: bgMove 10s infinite alternate;
             color: var(--primary-color);
             transition: background-color 0.3s, color 0.3s;
+        }
+
+        @keyframes bgMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
         .container {
@@ -34,14 +41,27 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1s forwards ease-out;
         }
 
-        h1 {
-            text-align: center;
-            color: var(--primary-color);
+        h1, button, table, footer {
             opacity: 0;
-            animation: fadeIn 1s forwards;
+            transform: translateY(50px);
+            animation: fadeUp 1s forwards ease-out;
+        }
+
+        h1 { animation-delay: 0.2s; }
+        button { animation-delay: 0.4s; }
+        table { animation-delay: 0.6s; }
+        footer { animation-delay: 0.8s; }
+
+        @keyframes fadeUp {
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Gece/Gündüz Modu */
@@ -52,26 +72,6 @@
 
         .container.dark-mode {
             background-color: #34495e;
-        }
-
-        /* Geçiş Animasyonu için Kartlar */
-        .card {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.5s forwards;
-        }
-
-        @keyframes fadeUp {
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            100% {
-                opacity: 1;
-            }
         }
 
         /* Tablo ve Butonlar */
@@ -135,6 +135,9 @@
         body.dark-mode .readonly {
             color: var(--text-dark);
         }
+        p{
+            color: #000000;
+        }
     </style>
 </head>
 <body>
@@ -148,37 +151,17 @@
                 <th>Hangi Kitaptan</th>
                 <th>Nerelerden</th>
             </tr>
-            <tr class="card">
+            <tr>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
             </tr>
-            <tr class="card">
+            <tr>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
             </tr>
-            <tr class="card">
-                <td class="readonly">Ödev Yok</td>
-                <td class="readonly">Ödev Yok</td>
-                <td class="readonly">Ödev Yok</td>
-            </tr>
-            <tr class="card">
-                <td class="readonly">Ödev Yok</td>
-                <td class="readonly">Ödev Yok</td>
-                <td class="readonly">Ödev Yok</td>
-            </tr>
-            <tr class="card">
-                <td class="readonly">Ödev Yok</td>
-                <td class="readonly">Ödev Yok</td>
-                <td class="readonly">Ödev Yok</td>
-            </tr>
-            <tr class="card">
-                <td class="readonly">Ödev Yok</td>
-                <td class="readonly">Ödev Yok</td>
-                <td class="readonly">Ödev Yok</td>
-            </tr>
-            <tr class="card">
+            <tr>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
                 <td class="readonly">Ödev Yok</td>
@@ -197,17 +180,6 @@
             document.querySelector('.container').classList.toggle('dark-mode');
             this.textContent = document.body.classList.contains('dark-mode') ? 'Gündüz Modu' : 'Gece Modu';
         });
-
-        // Sayfa yüklendiğinde yazıların animasyonu
-        window.onload = function() {
-            document.querySelector("h1").style.animation = "fadeIn 1s forwards";
-            let cards = document.querySelectorAll('.card');
-            cards.forEach(function(card, index) {
-                setTimeout(function() {
-                    card.style.animation = "fadeUp 0.5s forwards";
-                }, index * 300); // Kartlar arasında küçük gecikme eklenir
-            });
-        };
     </script>
 </body>
 </html>
