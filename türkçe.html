@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Türkçe Ödev Takip Tablosu</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
         /* Renk Paleti */
         :root {
@@ -147,12 +148,20 @@
         body.dark-mode .readonly {
             color: var(--text-dark);
         }
+        p{
+            color: #000000;
+        }
+
+        /* Gece/Gündüz Simgesi */
+        .fa-moon, .fa-sun {
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Türkçe</h1>
-        <button id="mode-toggle">Gece Modu</button>
+        <button id="mode-toggle"><i class="fas fa-moon"></i></button>
 
         <table>
             <tr>
@@ -187,9 +196,17 @@
         document.getElementById('mode-toggle').addEventListener('click', function () {
             document.body.classList.toggle('dark-mode');
             document.querySelector('.container').classList.toggle('dark-mode');
-            this.textContent = document.body.classList.contains('dark-mode') ? 'Gündüz Modu' : 'Gece Modu';
+
+            const icon = document.querySelector('#mode-toggle i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
         });
     </script>
 </body>
-</html> 
+</html>
 
