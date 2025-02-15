@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dersler</title>
+    <!-- FontAwesome için bağlantı ekliyoruz -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Sayfa arka planı ve animasyon */
         body {
@@ -15,6 +17,7 @@
             color: #fff;
             text-align: center;
             overflow: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         /* Animasyonlu arka plan */
@@ -28,6 +31,27 @@
             100% {
                 background-position: 0% 50%;
             }
+        }
+
+        /* Gece modunda kullanılacak animasyon */
+        @keyframes nightModeAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Gece Modu */
+        .night-mode {
+            background: linear-gradient(45deg, #2f2f2f, #1c1c1c, #3c3c3c, #212121);
+            background-size: 400% 400%;
+            animation: nightModeAnimation 10s ease infinite;
+            color: #ccc;
         }
 
         /* Başlıklar */
@@ -77,6 +101,30 @@
             transform: scale(0.98);
         }
 
+        /* Gece modu butonu konumlandırma */
+        #nightModeButton {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #nightModeButton:hover {
+            background-color: #3498db;
+            transform: scale(1.1);
+        }
+
+        #nightModeButton:active {
+            transform: scale(0.98);
+        }
+
         /* Mobil uyumlu */
         @media screen and (max-width: 600px) {
             header h1 {
@@ -90,6 +138,11 @@
             button.btn {
                 font-size: 18px;
                 padding: 12px 24px;
+            }
+
+            #nightModeButton {
+                font-size: 25px;
+                padding: 12px;
             }
         }
     </style>
@@ -129,41 +182,26 @@
             <button class="btn">Proje</button>
         </a>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-messaging.js"></script>
+
+    <!-- Gece Modu Simgesi Butonu -->
+    <button id="nightModeButton">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <script>
-        // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyC7XB6WGJtuxkUdyf6X_fDxGv8EwkCf9Yg",
-  authDomain: "odev-takip-b0422.firebaseapp.com",
-  projectId: "odev-takip-b0422",
-  storageBucket: "odev-takip-b0422.firebasestorage.app",
-  messagingSenderId: "112361904900",
-  appId: "1:112361904900:web:d5b08835ed7a25d4114e51",
-  measurementId: "G-780HHLK3RC"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-      </script>
-      <script>
-        function sendNotification(title, body) {
-    new Notification(title, { body: body });
-}
-
-document.getElementById("addHomework").addEventListener("click", () => {
-    sendNotification("Yeni Ödev Eklendi!", "Sisteme yeni bir ödev ekledin.");
-});
-
-      </script>          
+        const nightModeButton = document.getElementById('nightModeButton');
+        nightModeButton.addEventListener('click', () => {
+            document.body.classList.toggle('night-mode');
+            const icon = nightModeButton.querySelector('i');
+            if (document.body.classList.contains('night-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
 </body>
 </html>
 
