@@ -101,11 +101,12 @@
             transform: scale(0.98);
         }
 
-        /* Gece modu butonu konumlandırma */
+        /* Gece modu butonu ortalama ve stil */
         #nightModeButton {
-            position: fixed;
+            position: absolute;
             top: 20px;
-            right: 20px;
+            left: 50%;
+            transform: translateX(-50%); /* Butonun tam ortada olması için */
             font-size: 30px;
             background-color: rgba(0, 0, 0, 0.6);
             color: white;
