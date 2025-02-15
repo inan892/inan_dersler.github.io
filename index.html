@@ -101,12 +101,11 @@
             transform: scale(0.98);
         }
 
-        /* Gece modu butonu ortalama ve stil */
+        /* Gece modu butonu konumlandırma */
         #nightModeButton {
-            position: absolute;
+            position: fixed;
             top: 20px;
-            left: 50%;
-            transform: translateX(-50%); /* Butonun tam ortada olması için */
+            right: 20px;
             font-size: 30px;
             background-color: rgba(0, 0, 0, 0.6);
             color: white;
@@ -116,6 +115,28 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+        #nightModeButton {
+    position: fixed;
+    top: 40px; /* Üstten biraz daha fazla boşluk */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px; /* Buton genişliği */
+    height: 50px; /* Buton yüksekliği */
+    border-radius: 50%; /* Yuvarlak şekil */
+    background-color: #333; /* Arka plan rengi */
+    color: white; /* Icon rengi */
+    border: none; /* Sınırları kaldır */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px; /* Icon boyutu */
+    cursor: pointer;
+}
+
+
+
+
+
 
         #nightModeButton:hover {
             background-color: #3498db;
@@ -150,11 +171,12 @@
 </head>
 <body>
     <header>
-        <div class="button-container">
-        <button id="nightModeButton">
-            <i class="fas fa-moon"></i>
-        </button>
-        </div>
+            <!-- Gece Modu Simgesi Butonu -->
+             <div class="button-container">
+    <button id="nightModeButton">
+        <i class="fas fa-moon"></i>
+    </button>
+    </div>
         <h1>Ana Sayfa</h1>
         <h2>Lütfen istediğiniz dersi seçin</h2>
     </header>
@@ -188,9 +210,6 @@
             <button class="btn">Proje</button>
         </a>
     </div>
-
-
-
     <script>
         const nightModeButton = document.getElementById('nightModeButton');
         nightModeButton.addEventListener('click', () => {
