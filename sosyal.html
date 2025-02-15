@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sosyal Bilgiler Ödev Takip Tablosu</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Renk Paleti */
         :root {
@@ -32,6 +34,19 @@
         @keyframes bgMove {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
+        }
+
+        /* Gece Modu Arka Plan Animasyonu */
+        @keyframes nightBackground {
+            0% {
+                background: linear-gradient(45deg, #2c3e50, #34495e, #7f8c8d, #95a5a6);
+            }
+            50% {
+                background: linear-gradient(45deg, #2f3640, #4e5d6c, #8e979f, #7f8c8d);
+            }
+            100% {
+                background: linear-gradient(45deg, #2c3e50, #34495e, #7f8c8d, #95a5a6);
+            }
         }
 
         .container {
@@ -66,7 +81,8 @@
 
         /* Gece/Gündüz Modu */
         body.dark-mode {
-            background-color: var(--background-dark);
+            background: linear-gradient(45deg, #2c3e50, #34495e, #7f8c8d, #95a5a6);
+            animation: nightBackground 10s infinite alternate;
             color: var(--text-light);
         }
 
@@ -112,12 +128,19 @@
             border: none;
             cursor: pointer;
             margin-top: 20px;
-            font-size: 16px;
+            font-size: 20px;
             transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #mode-toggle:hover {
             background-color: #388e3c;
+        }
+
+        #mode-toggle .icon {
+            margin-right: 10px;
         }
 
         footer {
@@ -143,7 +166,9 @@
 <body>
     <div class="container">
         <h1>Sosyal Bilgiler</h1>
-        <button id="mode-toggle">Gece Modu</button>
+        <button id="mode-toggle">
+            <span id="mode-icon" class="fas fa-moon"></span> <!-- Başlangıçta ay simgesi -->
+        </button>
 
         <table>
             <tr>
@@ -178,7 +203,15 @@
         document.getElementById('mode-toggle').addEventListener('click', function () {
             document.body.classList.toggle('dark-mode');
             document.querySelector('.container').classList.toggle('dark-mode');
-            this.textContent = document.body.classList.contains('dark-mode') ? 'Gündüz Modu' : 'Gece Modu';
+            
+            let icon = document.getElementById('mode-icon');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun'); // Gündüz simgesine geçiş
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon'); // Gece simgesine geçiş
+            }
         });
     </script>
 </body>
